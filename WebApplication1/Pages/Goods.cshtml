@@ -5,10 +5,10 @@
 <link rel="stylesheet" href="~/css/carTable.css" asp-append-version="true" />
 
 <div class="text-center">
-    @if(Model.Response != null)
+    @if (Model.Response != null)
     {
         <text>
-            <div class= "@Model.Response.ResultType.ToString()">
+            <div class="@Model.Response.ResultType.ToString()">
                 @Model.Response.Message
             </div>
         </text>
@@ -21,18 +21,17 @@
                 <label asp-for="Input.Name"></label>
                 <input asp-for="Input.Name">
                 <span asp-validation-for="Input.Name"></span>
-                <br>
             </div>
             <div>
                 <label asp-for="Input.Age"></label>
                 <input type="number" asp-for="Input.Age">
                 <span asp-validation-for="Input.Age"></span>
-                <br>
             </div>
             <div>
                 <label asp-for="Input.Email"></label>
                 <input type="email" asp-for="Input.Email">
                 <span asp-validation-for="Input.Email"></span>
+                <span class="loader"></span>
                 <br>
             </div>
             <div>

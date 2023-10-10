@@ -1,0 +1,14 @@
+﻿.table-car {
+    background: antiquewhite;
+}
+
+td, th {
+    border: 1px dotted black;
+}
+
+table tr:nth-child(2n) {
+    background-color: darkkhaki;
+}
+.car-table-main{
+    height:75vh;
+}

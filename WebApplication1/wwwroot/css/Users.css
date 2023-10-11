@@ -1,7 +1,7 @@
 ﻿body {
 }
 .table-car {
-    background: antiquewhite;
+    background: #FACBEA;
     width: 100%;
 }
 
@@ -10,7 +10,7 @@ td, th {
 }
 
 table tr:nth-child(2n) {
-    background-color: darkkhaki;
+    background-color: #FFE4D6;
 }
 
 .car-table-main {

@@ -35,9 +35,22 @@ namespace Core.Service
         }
         public bool CreateUser(IUser user)
         {
+
             user.Id = Guid.NewGuid();
             user.CreateDate = DateTime.Now;
             return userRepository.CreateUser(user);
+        }
+        public bool IsUsedEmail(string email)
+        {
+            if(userRepository.GetUserByEmail(email) == null)
+            {
+                return false;
+            }
+            return true;
+        }
+        public IEnumerable<IUser> GetAllUsers()
+        {
+            return userRepository.GetAllUsers();
         }
 
     }

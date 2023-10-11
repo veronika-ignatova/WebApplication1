@@ -1,0 +1,28 @@
+﻿@page
+@model BootCampWeb.Pages.UsersModel
+@{
+}
+<link rel="stylesheet" href="~/css/users.css" asp-append-version="true" />
+<div class="text-center">
+    <table class="table-car car-table-main">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Age</th>
+            <th>Create Date</th>
+            <th>Password</th>
+        </tr>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.Name</td>
+                <td>@user.Email</td>
+                <td>@user.Age</td>
+                <td>@user.CreateDate</td>
+                <td>@user.Password</td>
+            </tr>
+        }
+    </table>
+</div>

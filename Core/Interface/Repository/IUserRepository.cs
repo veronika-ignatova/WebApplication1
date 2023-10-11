@@ -10,5 +10,7 @@ namespace Core.Interface.Repository
     {
         IUser GetUserById(Guid id);
         bool CreateUser(IUser user);
+        IUser GetUserByEmail(string email);
+        IEnumerable<IUser> GetAllUsers();
     }
 }

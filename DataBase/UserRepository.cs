@@ -1,5 +1,4 @@
-﻿using Core.Entities;
-using Core.Interface;
+﻿using Core.Interface;
 using Core.Interface.Repository;
 
 namespace DataBase
@@ -11,7 +10,7 @@ namespace DataBase
         {
             _myDbContext = myDbContext;
         }
-        private IUser CastToIUser(Models.Users user)
+        private IUser CastToIUser(Models.User user)
         {
             if (user == null) return null;
             return new Core.Entities.User
@@ -40,7 +39,7 @@ namespace DataBase
         {
             try
             {
-                _myDbContext.Users.Add(new Models.Users
+                _myDbContext.Users.Add(new Models.User
                 {
                     Id = user.Id,
                     Name = user.Name,

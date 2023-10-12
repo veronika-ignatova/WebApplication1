@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataBase.Models
 {
-    internal class Users
+    internal class User
     {
         [Key]
         public Guid Id { get; set; }

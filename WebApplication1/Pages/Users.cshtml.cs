@@ -13,8 +13,7 @@ namespace BootCampWeb.Pages
             _userService = userService;
         }
         public IEnumerable<IUser> Users { get; set; }
-        
-        public void OnGet()
+            public void OnGet()
         {
             Users = _userService.GetAllUsers();
         }

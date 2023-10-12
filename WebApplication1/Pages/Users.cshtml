@@ -12,7 +12,7 @@
                 <th>Name</th>
                 <th>Email</th>
                 <th>Age</th>
-                <th>Create Date</th>
+                <th>Days from Creation</th>
                 <th>Password</th>
             </tr>
         </thead>
@@ -22,10 +22,10 @@
             {
                 <tr>
                     <td>@user.Id</td>
-                    <td>@user.Name</td>
+                    <td>@user.Name?.ToUpper()</td>
                     <td>@user.Email</td>
                     <td>@user.Age</td>
-                    <td>@user.CreateDate</td>
+                    <td>@(user.CreateDate.HasValue ? (DateTime.Now - user.CreateDate.Value).Days : null)</td>
                     <td>@user.Password</td>
                 </tr>
             }

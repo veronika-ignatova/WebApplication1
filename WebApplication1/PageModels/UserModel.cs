@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Core.Entities;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
 namespace BootCampWeb.PageModels
@@ -15,6 +16,8 @@ namespace BootCampWeb.PageModels
         [DataType(DataType.EmailAddress)]
         [Display(Name = "Email", Prompt = "Enter your email")]
         public string? Email { get; set; }
+        //[Display(Name = "Address", Prompt = "Enter your address")]
+        //public Address? Address { get; set; }
         [Required]
         [Range(18, 99)]
         [Display(Name = "Age", Prompt = "Enter your age")]

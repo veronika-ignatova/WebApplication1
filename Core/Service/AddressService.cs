@@ -10,8 +10,8 @@ namespace Core.Service
 {
     public class AddressService : IAddressService
     {
-        protected readonly IAddressService addressRepository;
-        public AddressService(IAddressService addressRepository)
+        protected readonly IAddressRepository addressRepository;
+        public AddressService(IAddressRepository addressRepository)
         {
             this.addressRepository = addressRepository;
         }

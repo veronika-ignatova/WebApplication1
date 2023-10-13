@@ -15,6 +15,8 @@ builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IAddressRepository, AddressRepository>();
 builder.Services.AddTransient<IAddressService, AddressService>();
+builder.Services.AddTransient<IDayRepository, DayRepository>();
+builder.Services.AddTransient<IDayService, DayService>();
 
 var app = builder.Build();
 

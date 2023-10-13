@@ -1,0 +1,42 @@
+﻿@page
+@using Core.Enums;
+@model BootCampWeb.Pages.DayModel
+@{
+    var days = Enum.GetValues<DayType>().Where(x => x != DayType.None);
+}
+<link rel="stylesheet" href="~/css/users.css" asp-append-version="true" />
+<div>
+    <form method="post">
+        <div class="d-flex flex-grow-2">
+            <select onchange="this.form.submit()" asp-for="Language" asp-items="Html.GetEnumSelectList<Language>()">
+                <option selected="selected" value="">Please select</option>
+            </select>
+            <div>
+                @* <input type="submit" value="Select language"> *@
+            </div>
+        </div>
+    </form>
+</div>
+<div class="text-center">
+    <table class="table-car car-table-main">
+        <thead style="background-color:#D988B9">
+            <tr>
+                @foreach (var day in days)
+                {
+                    <th>@day.ToString()</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @if (Model.Week != null)
+                {
+                    foreach (var day in days)
+                    {
+                        <td>@Model.Week[day]</td>
+                    }
+                }
+            </tr>
+        </tbody>
+    </table>
+</div>

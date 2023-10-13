@@ -13,7 +13,7 @@ namespace Core.Interface
         Guid Id { get; set; }
         string? Name { get; set; }
         string? Email { get; set; }
-        Address? Address { get; set; }
+        IAddress? Address { get; set; }
         int AddressId { get; set; }
         int? Age { get; set; }
         DateTime? CreateDate { get; set; }

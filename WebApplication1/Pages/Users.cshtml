@@ -28,13 +28,7 @@
                     <td>@user.Age</td>
                     <td>@(user.CreateDate.HasValue ? (DateTime.Now - user.CreateDate.Value).Days : null)</td>
                     <td>@user.Password</td>
-                    @foreach(var address in Model.Addresses)
-                    {
-                        if(@user.AddressId == address.Id)
-                        {
-                            <td>@address.Index</td>
-                        }
-                    }
+                    <td>@user.Address?.Index</td>
                 </tr>
             }
         </tbody>

@@ -1,5 +1,6 @@
 ﻿using Core.Interface;
 using Core.Interface.Repository;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataBase
 {
@@ -20,9 +21,24 @@ namespace DataBase
                 Email = user.Email,
                 Age = user.Age,
                 CreateDate = user.CreateDate,
-                Password = user.Password
+                Password = user.Password,
+                Address = CastToIAddress(user.Address)
             };
         }
+
+        private IAddress? CastToIAddress(Models.Address? address)
+        {
+            if (address == null) return null;
+            return new Core.Entities.Address
+            {
+                City = address.City,
+                Country = address.Country,
+                Id = address.Id,
+                Index = address.Index,
+                Street = address.Street
+            };
+        }
+
         public IUser GetUserById(Guid id)
         {
             var users = _myDbContext.Users;
@@ -35,6 +51,7 @@ namespace DataBase
             }
             return null;
         }
+
         public bool CreateUser(IUser user)
         {
             try
@@ -72,7 +89,8 @@ namespace DataBase
 
         public IEnumerable<IUser> GetAllUsers()
         {
-            var users = _myDbContext.Users;
+            var users = _myDbContext.Users.Include(x => x.Address);
+
             List<IUser> list = new ();
             foreach (var user in users)
             {

@@ -19,6 +19,7 @@ namespace DataBase.Models
         [StringLength(100)]
         public string? Email { get; set; }
         public Address? Address { get; set; }
+
         [ForeignKey(nameof(Address))]
         public int? AddressId { get; set; }
         [Range(0,100)]

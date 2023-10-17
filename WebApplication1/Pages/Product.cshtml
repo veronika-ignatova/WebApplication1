@@ -1,0 +1,97 @@
+﻿@page "/product/{id}"
+@model BootCampWeb.Pages.ProductModel
+@{
+}
+<link rel="stylesheet" href="~/css/Product.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<section class="product">
+    <div class="product__photo">
+        <div class="photo-container">
+            <div class="photo-main">
+                <img src="@Model.Product.Thumbnail" class="img-thumbnail" />
+            </div>
+            @* <div class="photo-album">
+            <ul>
+            @foreach (var im in Model.Product.Images)
+            {
+            <img src="@im" class="resize" />
+            }
+            </ul>
+            </div> *@
+        </div>
+    </div>
+    <div class="product__info">
+        <div class="title">
+            <h1>@Model.Product.Title</h1>
+        </div>
+        <div class="price">
+            <span>$ @Model.Product.Price</span>
+        </div>
+        <div class="description">
+            <h3>@Model.Product.Description</h3>
+            <ul>
+                <li>Discount @Model.Product.DiscountPercentage %</li>
+                <li>Rating: @Model.Product.Rating</li>
+                <li>Stock: @Model.Product.Stock</li>
+                <li>Brand: @Model.Product.Brand</li>
+                <li>Category: @Model.Product.Category</li>
+            </ul>
+        </div>
+    </div>
+</section>
+</div>
+
+
+
+
+
+@* <div class="w-100">
+    <div class="d-flex justify-content-end">
+        <nav class="navbar navbar-light bg-light">
+            <form class="form-inline d-flex">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchString" minlength="3" required>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </nav>
+    </div>
+    <table class="table-car">
+        <thead style="background-color:pink;">
+            <tr class="text-center">
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>DiscountPercentage</th>
+                <th>Rating</th>
+                <th>Stock</th>
+                <th>Brand</th>
+                <th>Category</th>
+                <th>Thumbnail</th>
+                <th>Images</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.Product!= null)
+            {
+                <tr>
+                    <th>@Model.Product.Id</th>
+                    <th>@Model.Product.Title</th>
+                    <th>@Model.Product.Description</th>
+                    <th>@Model.Product.Price</th>
+                    <th>@Model.Product.DiscountPercentage</th>
+                    <th>@Model.Product.Rating</th>
+                    <th>@Model.Product.Stock</th>
+                    <th>@Model.Product.Brand</th>
+                    <th>@Model.Product.Category</th>
+                    <th><img src="@Model.Product.Thumbnail" class="img-thumbnail" /></th>
+                    <th>
+                        @*  @foreach (var im in product.Images)
+                    {
+                    <img src="@im" class="resize"/>
+                    } *@
+@* </th>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div> *@

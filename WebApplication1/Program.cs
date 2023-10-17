@@ -9,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<MyDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Home") ?? throw new InvalidOperationException("Connection string 'RazorPagesContext' not found.")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("RazorPagesConnection") ?? throw new InvalidOperationException("Connection string 'RazorPagesContext' not found.")));
 
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserService, UserService>();

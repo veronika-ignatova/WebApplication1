@@ -16,11 +16,12 @@ html {
 body {
   margin-bottom: 60px;
 }
-.center {
+
+/*.center {
     display: flex;
     align-items: center;
     margin-left: 66%;
-}
+}*/
 .validation-summary-errors{
     color:red;
 }

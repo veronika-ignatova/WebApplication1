@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using BootCampWeb.PageModels;
 using Core.Enums;
 
-namespace WebApplication1.Pages
+namespace BootCampWeb.Pages
 {
     public class GoodsModel : PageModel
     {

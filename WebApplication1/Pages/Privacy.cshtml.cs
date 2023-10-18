@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace WebApplication1.Pages
+namespace BootCampWeb.Pages
 {
     public class PrivacyModel : PageModel
     {

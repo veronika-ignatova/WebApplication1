@@ -1,9 +1,7 @@
-using Core.Interface;
 using Core.Interface.Service;
 using Microsoft.AspNetCore.Mvc;
 using Core.Entities;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.ComponentModel.DataAnnotations;
 using BootCampWeb.PageModels;
 using Core.Enums;
 

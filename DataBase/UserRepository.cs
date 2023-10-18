@@ -11,7 +11,7 @@ namespace DataBase
         {
             _myDbContext = myDbContext;
         }
-        private IUser CastToIUser(Models.User user)
+        private IUser CastToIUser(Models.User? user)
         {
             if (user == null) return null;
             return new Core.Entities.User
@@ -76,25 +76,17 @@ namespace DataBase
 
         public IUser GetUserByEmail(string email)
         {
-            var users = _myDbContext.Users;
-            foreach (var user in users)
-            {
-                if(user.Email.ToLower() == email.ToLower())
-                {
-                    return CastToIUser(user);
-                }
-            }
-            return null;
+            return CastToIUser(_myDbContext.Users.FirstOrDefault(x => x.Email.ToLower() == email.ToLower()));
         }
 
         public IEnumerable<IUser> GetAllUsers()
         {
             var users = _myDbContext.Users.Include(x => x.Address);
 
-            List<IUser> list = new ();
+            List<IUser> list = new();
             foreach (var user in users)
             {
-                if(user != null) list.Add(CastToIUser(user));
+                if (user != null) list.Add(CastToIUser(user));
             }
             return list;
         }

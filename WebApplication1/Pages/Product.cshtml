@@ -2,48 +2,24 @@
 @model BootCampWeb.Pages.ProductModel
 @{
 }
-<link rel="stylesheet" href="~/css/Product.css" asp-append-version="true" />
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-<section class="product">
-    <div class="product__photo">
-        <div class="photo-container">
-            <div class="photo-main">
-                <img src="@Model.Product.Thumbnail" class="img-thumbnail" />
-            </div>
-            @* <div class="photo-album">
-            <ul>
-            @foreach (var im in Model.Product.Images)
-            {
-            <img src="@im" class="resize" />
-            }
-            </ul>
-            </div> *@
-        </div>
+<link rel="stylesheet" href="~/css/Product.css" asp-append-version="true" />
+
+<div class="card">
+    <img src="@Model.Product.Thumbnail" style="width:100%">
+    <h1>@Model.Product.Title</h1>
+    <p class="price">$@Model.Product.Price</p>
+    <p>@Model.Product.Description</p>
+    <div class="container">
+        <ul>
+            <li>Discount: @Model.Product.DiscountPercentage</li>
+            <li>Rating: @Model.Product.Rating</li>
+            <li>Stock: @Model.Product.Stock</li>
+            <li>Brand: @Model.Product.Brand</li>
+            <li>Category: @Model.Product.Category</li>
+        </ul>
     </div>
-    <div class="product__info">
-        <div class="title">
-            <h1>@Model.Product.Title</h1>
-        </div>
-        <div class="price">
-            <span>$ @Model.Product.Price</span>
-        </div>
-        <div class="description">
-            <h3>@Model.Product.Description</h3>
-            <ul>
-                <li>Discount @Model.Product.DiscountPercentage %</li>
-                <li>Rating: @Model.Product.Rating</li>
-                <li>Stock: @Model.Product.Stock</li>
-                <li>Brand: @Model.Product.Brand</li>
-                <li>Category: @Model.Product.Category</li>
-            </ul>
-        </div>
-    </div>
-</section>
 </div>
-
-
-
-
 
 @* <div class="w-100">
     <div class="d-flex justify-content-end">

@@ -1,7 +1,5 @@
 using Core.Entities;
-using Core.Interface;
 using Core.Interface.Service;
-using Core.Service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 

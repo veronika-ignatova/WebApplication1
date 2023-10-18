@@ -1,5 +1,4 @@
-﻿using Core.Entities;
-using Core.Interface;
+﻿using Core.Interface;
 using Core.Interface.Repository;
 using Core.Interface.Service;
 

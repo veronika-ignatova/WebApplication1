@@ -1,15 +1,8 @@
 ﻿using Core.Entities;
-using Core.Interface;
 using Core.Interface.Repository;
 using DataBase.Models;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 namespace DataBase
 {

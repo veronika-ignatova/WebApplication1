@@ -1,1 +1,82 @@
-﻿
+﻿@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.card {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    margin: auto;
+    text-align: center;
+    z-index:0;
+}
+
+.price {
+    color: grey;
+    font-size: 22px;
+}
+
+.card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
+
+    .card button:hover {
+        opacity: 0.7;
+    }
+
+
+.card ul li {
+    width: 250px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    margin: 1.5em;
+    cursor: pointer;
+    padding: 1em;
+    background: rgb(43, 43, 43);
+    position: relative;
+    color: white;
+    border-radius: 5px;
+}
+
+    .card ul li::before,
+    .card ul li::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        border-radius: 5px;
+        width: 105%;
+        transition: all 0.4s;
+    }
+
+    .card ul li::before {
+        left: 0%;
+        height: 130%;
+        background: linear-gradient(to right, #021B79, #0575E6);
+    }
+
+    .card ul li::after {
+        left: -10%;
+        height: 120%;
+        background: #ffffff56;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.164);
+    }
+
+    .card ul li:hover::before {
+        transform: translateX(-2.5%);
+    }
+
+.card ul li:hover::after {
+    transform: translateX(15%);
+}
+

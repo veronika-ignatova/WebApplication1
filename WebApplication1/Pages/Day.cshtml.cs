@@ -18,7 +18,7 @@ namespace BootCampWeb.Pages
         public Language Language { get; set; }
         public void OnGet()
         {
-
+            Week = _dayService.GetWeekDaysByLanguage(Language.English);
         }
         public void OnPost() 
         {

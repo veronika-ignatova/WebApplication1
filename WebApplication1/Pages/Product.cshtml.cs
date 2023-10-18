@@ -15,10 +15,9 @@ namespace BootCampWeb.Pages
         }
 
         public Product? Product { get; set; }
-        public async Task<IActionResult> OnGetAsync(int id)
+        public async Task OnGetAsync(int id)
         {
             Product = await _productService.GetProductByIdAsync(id);
-            return Page();
         }
     }
 }

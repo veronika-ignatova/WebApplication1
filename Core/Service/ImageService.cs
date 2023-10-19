@@ -2,11 +2,6 @@
 using Core.Interface;
 using Core.Interface.Repository;
 using Core.Interface.Service;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.Service
 {
@@ -22,7 +17,7 @@ namespace Core.Service
         {
             if (!string.IsNullOrEmpty(name) && id.HasValue && id.Value != 0)
             {
-                var imageName = id + "_image_" + name;
+                var imageName = GetImageName(id, name);
                 if (ImageCache.IsImageDownload(imageName))
                 {
                     return ImageCache.GetImages(imageName);
@@ -38,41 +33,14 @@ namespace Core.Service
                         }
                         else
                         {
-                            var image = await GetImageFromSite(id, name);
-                            if (image.Length > 0)
-                            {
-                                ImageCache.AddImage(imageName, image);
-                                imageRepository.UpdateImage(new Image()
-                                {
-                                    Data = image,
-                                    Name = imageName,
-                                    UpdateDate = DateTime.Now
-                                });
-                                return image;
-                            }
-                            else
-                            {
-                                return dbImage.Data;
-                            }
+                            return await UpdateImage(imageRepository.UpdateImage, id, name, dbImage.Data);
                         }
                     }
                     else
                     {
-                        var image = await GetImageFromSite(id, name);
-                        if (image.Length > 0)
-                        {
-                            ImageCache.AddImage(imageName, image);
-                            imageRepository.CreateImage(new Image()
-                            {
-                                Data = image,
-                                Name = imageName,
-                                UpdateDate = DateTime.Now
-                            });
-                            return image;
-                        }
+                        return await UpdateImage(imageRepository.CreateImage, id, name, new byte[0]);
                     }
                 }
-
             }
 
             return new byte[0];
@@ -84,6 +52,28 @@ namespace Core.Service
             return image != null;
         }
 
+        private string GetImageName(int? id, string? name) => id + "_image_" + name;
+
+        private async Task<byte[]> UpdateImage(Func<IImage, bool> func, int? id, string? name, byte[] defaultData)
+        {
+            var imageName = GetImageName(id, name);
+            var image = await GetImageFromSite(id, name);
+            if (image.Length > 0)
+            {
+                ImageCache.AddImage(imageName, image);
+                func(new Image()
+                {
+                    Data = image,
+                    Name = imageName,
+                    UpdateDate = DateTime.Now
+                });
+                return image;
+            }
+            else
+            {
+                return defaultData;
+            }
+        }
 
         public async Task<byte[]> GetImageFromSite(int? id, string? name)
         {

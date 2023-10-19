@@ -4,6 +4,7 @@ using Core.Entities;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using BootCampWeb.PageModels;
 using Core.Enums;
+using Core.Helper;
 
 namespace BootCampWeb.Pages
 {
@@ -23,6 +24,8 @@ namespace BootCampWeb.Pages
 
         public void OnGet()
         {
+            var a = DayType.Monday.GetDisplayName();
+            var a1 = "https://www.example.com".IsStringALink();
         }
 
         public void OnPost()

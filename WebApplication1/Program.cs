@@ -20,6 +20,7 @@ builder.Services.AddTransient<IDayService, DayService>();
 builder.Services.AddTransient<IProductRepository, ProductRepository>();
 builder.Services.AddTransient<IProductService, ProductService>();
 builder.Services.AddTransient<IImageService, ImageService>();
+builder.Services.AddTransient<IImageRepository, ImageRepository>();
 
 var app = builder.Build();
 

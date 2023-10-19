@@ -4,8 +4,8 @@ namespace Core
     public class ImageCache
     {
         private static Dictionary<string, byte[]> images;
-
         private static object lockObj = new object();
+
         static ImageCache()
         {
             images = new Dictionary<string, byte[]>();
@@ -31,7 +31,5 @@ namespace Core
         {
             return images.ContainsKey(key);
         }
-
-
     }
 }

@@ -1,3 +1,4 @@
+using Core.Entities;
 using Core.Interface.Repository;
 using Core.Interface.Service;
 using Core.Service;
@@ -10,6 +11,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddDbContext<MyDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("RazorPagesConnection") ?? throw new InvalidOperationException("Connection string 'RazorPagesContext' not found.")));
+
+
+builder.Services.Configure<AppConf>(builder.Configuration.GetSection("AppConf"));
 
 builder.Services.AddTransient<IUserRepository, UserRepository>();
 builder.Services.AddTransient<IUserService, UserService>();

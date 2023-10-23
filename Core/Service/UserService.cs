@@ -22,6 +22,10 @@ namespace Core.Service
             user.CreateDate = DateTime.Now;
             return userRepository.CreateUser(user);
         }
+        public bool UpdateUser(IUser user)
+        {
+            return userRepository.UpdateUser(user);
+        }
         public bool IsUsedEmail(string email)
         {
             if(userRepository.GetUserByEmail(email) == null)

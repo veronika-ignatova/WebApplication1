@@ -22,6 +22,7 @@ namespace DataBase
                 Age = user.Age,
                 CreateDate = user.CreateDate,
                 Password = user.Password,
+                AddressId = user.AddressId,
                 Address = CastToIAddress(user.Address)
             };
         }
@@ -41,7 +42,7 @@ namespace DataBase
 
         public IUser GetUserById(Guid id)
         {
-            return CastToIUser(_myDbContext.Users.FirstOrDefault(x => x.Id == id));
+            return CastToIUser(_myDbContext.Users.Include(x => x.Address).FirstOrDefault(x => x.Id == id));
         }
 
         public bool CreateUser(IUser user)
@@ -57,6 +58,48 @@ namespace DataBase
                     CreateDate = user.CreateDate,
                     Password = user.Password
                 });
+                _myDbContext.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            return true;
+        }
+        public bool UpdateUser(IUser user)
+        {
+            try
+            {
+                var dbUser = _myDbContext.Users.FirstOrDefault(x => x.Id == user.Id);
+                if (dbUser == null)
+                {
+                    return false;
+                }
+                dbUser.Name = user.Name;
+                dbUser.Age = user.Age;
+                dbUser.Password = user.Password;
+                if (user.Address != null)
+                {
+                    var dbAddress = _myDbContext.Addresses.FirstOrDefault(x => x.Id == user.Address.Id);
+                    if (dbAddress != null && dbAddress.Id != 0)
+                    {
+                        dbAddress.Street = user.Address.Street;
+                        dbAddress.City = user.Address.City;
+                        dbAddress.Index = user.Address.Index;
+                        dbAddress.Country = user.Address.Country;
+                    }
+                    else
+                    {
+                        dbUser.Address = new Models.Address
+                        {
+                            Street = user.Address.Street,
+                            City = user.Address.City,
+                            Index = user.Address.Index,
+                            Country = user.Address.Country,
+                        };
+                    }
+                }
+
                 _myDbContext.SaveChanges();
             }
             catch (Exception)

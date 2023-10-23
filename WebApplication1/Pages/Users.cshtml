@@ -25,8 +25,8 @@
             {
                 <tr>
                     <td>@user.Id</td>
-                    <td>@user.Name?.ToUpper()</td>
-                    <td><a asp-page="User" asp-route-id="@user.Id">@user.Email</a></td>
+                    <td>@user.Name</td>
+                    <td><a asp-page="UserEdit" asp-route-id="@user.Id">@user.Email</a></td>
                     <td>@user.Age</td>
                     <td>@(user.CreateDate.HasValue ? (DateTime.Now - user.CreateDate.Value).Days : null)</td>
                     <td>@user.Password</td>

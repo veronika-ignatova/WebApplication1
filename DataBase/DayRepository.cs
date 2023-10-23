@@ -12,16 +12,9 @@ namespace DataBase
         }
         public IDictionary<DayType, string> GetDaysByLanguage(Language language)
         {
-            var days = _myDbContext.Days;
-            var dictionary = new Dictionary<DayType, string>();
-            foreach (var day in days)
-            {
-                if (day.Language == language)
-                {
-                    dictionary.Add(day.DayType ?? DayType.None, day.Value);
-                }
-            }
-            return dictionary;
+            return _myDbContext.Days
+                .Where(x => x.Language == language)
+                .ToDictionary(x => x.DayType ?? DayType.None, x => x.Value);
         }
     }
 }

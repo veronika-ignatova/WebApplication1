@@ -41,15 +41,7 @@ namespace DataBase
 
         public IUser GetUserById(Guid id)
         {
-            var users = _myDbContext.Users;
-            foreach (var user in users)
-            {
-                if (user.Id == id)
-                {
-                    return CastToIUser(user);
-                }
-            }
-            return null;
+            return CastToIUser(_myDbContext.Users.FirstOrDefault(x => x.Id == id));
         }
 
         public bool CreateUser(IUser user)
@@ -76,19 +68,12 @@ namespace DataBase
 
         public IUser GetUserByEmail(string email)
         {
-            return CastToIUser(_myDbContext.Users.FirstOrDefault(x => x.Email.ToLower() == email.ToLower()));
+            return CastToIUser(_myDbContext.Users.FirstOrDefault(x => x.Email != null && email != null && x.Email.ToLower() == email.ToLower()));
         }
 
         public IEnumerable<IUser> GetAllUsers()
         {
-            var users = _myDbContext.Users.Include(x => x.Address);
-
-            List<IUser> list = new();
-            foreach (var user in users)
-            {
-                if (user != null) list.Add(CastToIUser(user));
-            }
-            return list;
+            return _myDbContext.Users.Include(x => x.Address).ToList().Select(CastToIUser);
         }
     }
 }

@@ -10,7 +10,7 @@ td, th {
 }
 
 table tr:nth-child(2n) {
-    background-color: #FFE4D6;
+    background-color: #FFE4D6 !important;
 }
 
 .car-table-main {

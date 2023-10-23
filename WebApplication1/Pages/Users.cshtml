@@ -2,9 +2,11 @@
 @model BootCampWeb.Pages.UsersModel
 @{
 }
+<link rel="stylesheet" href="~/lib/DataTables/datatables.min.css" asp-append-version="true" />
+
 <link rel="stylesheet" href="~/css/users.css" asp-append-version="true" />
 <div class="text-center">
-    <table class="table-car car-table-main">
+    <table class="table-car car-table-main" id ="myTable">
         <thead style="background-color:#D988B9">
 
             <tr>
@@ -24,7 +26,7 @@
                 <tr>
                     <td>@user.Id</td>
                     <td>@user.Name?.ToUpper()</td>
-                    <td>@user.Email</td>
+                    <td><a asp-page="User" asp-route-id="@user.Id">@user.Email</a></td>
                     <td>@user.Age</td>
                     <td>@(user.CreateDate.HasValue ? (DateTime.Now - user.CreateDate.Value).Days : null)</td>
                     <td>@user.Password</td>
@@ -34,3 +36,10 @@
         </tbody>
     </table>
 </div>
+@section Scripts{
+    <script src="~/lib/DataTables/datatables.min.js"></script>
+
+    <script type="text/javascript">
+        let table = new DataTable('#myTable');
+    </script>
+}

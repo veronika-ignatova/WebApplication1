@@ -1,3 +1,4 @@
+using BootCampWeb.Helpers;
 using BootCampWeb.PageModels;
 using Core.Entities;
 using Core.Enums;
@@ -48,6 +49,7 @@ namespace BootCampWeb.Pages
                 return BadRequest();
             }
 
+            if (Request.IsAjaxRequest()) return Partial("_User", User);
             return Page();
         }
 

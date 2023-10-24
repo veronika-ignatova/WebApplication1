@@ -6,7 +6,7 @@
 
 <link rel="stylesheet" href="~/css/users.css" asp-append-version="true" />
 <div class="text-center">
-    <table class="table-car car-table-main" id ="myTable">
+    <table class="table-car car-table-main" id="myTable">
         <thead style="background-color:#D988B9">
 
             <tr>
@@ -25,7 +25,7 @@
             {
                 <tr>
                     <td>@user.Id</td>
-                    <td>@user.Name</td>
+                    <td><p onclick="getUser(this)" data-user-id="@user.Id" class="user-name-modal" data-bs-toggle="modal" data-bs-target="#myModal">@user.Name</p></td>
                     <td><a asp-page="UserEdit" asp-route-id="@user.Id">@user.Email</a></td>
                     <td>@user.Age</td>
                     <td>@(user.CreateDate.HasValue ? (DateTime.Now - user.CreateDate.Value).Days : null)</td>
@@ -36,10 +36,42 @@
         </tbody>
     </table>
 </div>
+
+<div class="modal fade" tabindex="-1" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">
+                    @*  @foreach(var user in Model.Users)
+                    { *@
+                    Edit your user
+                    @* } *@
+                </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 @section Scripts{
     <script src="~/lib/DataTables/datatables.min.js"></script>
 
     <script type="text/javascript">
         let table = new DataTable('#myTable');
+
+        function getUser(element) {
+            let userId = $(element).data('user-id');
+
+            $.ajax({
+                url: '/UserEdit?id=' + userId,
+            }).done(function (data) {
+                $('#myModal .modal-body').html(data);
+            });
+        }
     </script>
+
 }

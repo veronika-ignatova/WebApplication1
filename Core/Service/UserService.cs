@@ -18,8 +18,8 @@ namespace Core.Service
         public bool CreateUser(IUser user)
         {
 
-            user.Id = Guid.NewGuid();
-            user.CreateDate = DateTime.Now;
+            Id = Guid.NewGuid();
+            CreateDate = DateTime.Now;
             return userRepository.CreateUser(user);
         }
         public bool UpdateUser(IUser user)

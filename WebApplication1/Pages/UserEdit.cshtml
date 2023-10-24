@@ -1,79 +1,11 @@
 ﻿@page
+@using BootCampWeb.Helpers
 @model BootCampWeb.Pages.UserEditModel
-@{
-}
-<div class="text-center">
-    @if (Model.Response != null)
-    {
-    }
-    <form method="post">
-        @* <div asp-validation-summary="All"></div> *@
-        <div class="d-flex flex-column gap-4">
-            <div class="d-flex justify-content-center gap-3">
-                <div class="d-flex flex-column align-items-end gap-2">
 
-                    <div>
-                        <label asp-for="User.Name"></label>
-                        <input asp-for="User.Name">
-                        <span asp-validation-for="User.Name"></span>
-                    </div>
-                    <div>
-                        <label asp-for="User.Age"></label>
-                        <input type="number" asp-for="User.Age">
-                        <span asp-validation-for="User.Age"></span>
-                    </div>
-                    <div>
-                        <label asp-for="User.Email"></label>
-                        <input asp-for="User.Email" id="author-email-id" oninput="ChangeEmail(event)" />
-                        <span class="loader d-none" id="email-loader"></span>
-                        <span class="d-none field-validation-error" id="email-loader-error">This email is used</span>
-                        <span asp-validation-for="User.Email"></span>
-                    </div>
-                    <div>
+@await Html.PartialAsync("_User", Model);
 
-                        <label asp-for="User.Password"></label>
-                        <input type="password" asp-for="User.Password">
-                        <span asp-validation-for="User.Password"></span>
-                    </div>
-
-                        <input asp-for="User.Address.Id" />
-                        <input asp-for="User.Id" />
-                </div>
-                <div class="d-flex flex-column align-items-end gap-2">
-                    <div>
-                        <label asp-for="User.Address.City"></label>
-                        <input asp-for="User.Address.City">
-                        <span asp-validation-for="User.Address.City"></span>
-                    </div>
-                    <div>
-                        <label asp-for="User.Address.Country"></label>
-                        <input asp-for="User.Address.Country">
-                        <span asp-validation-for="User.Address.Country"></span>
-                    </div>
-                    <div>
-                        <label asp-for="User.Address.Street"></label>
-                        <input asp-for="User.Address.Street">
-                        <span asp-validation-for="User.Address.Street"></span>
-                    </div>
-                    <div>
-                        <label asp-for="User.Address.Index"></label>
-                        <input asp-for="User.Address.Index">
-                        <span asp-validation-for="User.Address.Index"></span>
-                    </div>
-                    <div>
-                        <input asp-for="User.Address.Id" />
-                    </div>
-                </div>
-            </div>
-            <div>
-                <input type="submit" value="Edit">
-            </div>
-        </div>
-    </form>
-</div>
 
 @section Scripts{
-    <partial name="_ValidationScriptsPartial" />
     <script type="text/javascript">
 
         function ChangeEmail(e) {

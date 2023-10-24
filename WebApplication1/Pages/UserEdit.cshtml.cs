@@ -20,7 +20,6 @@ namespace BootCampWeb.Pages
         }
         [BindProperty]
         public UserEditViewModel? User { get; set; }
-        public ResultModel Response { get; set; }
 
         public IActionResult OnGet(Guid id)
         {
@@ -53,11 +52,12 @@ namespace BootCampWeb.Pages
             return Page();
         }
 
-        public void OnPost()
+        public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
             {
-                return;
+                if (Request.IsAjaxRequest()) return Partial("_User", User);
+                return Page();
             }
             if (User != null)
             {
@@ -91,18 +91,21 @@ namespace BootCampWeb.Pages
 
                     if (_userService.UpdateUser(user))
                     {
-                        Response = new ResultModel() { ResultType = ResultType.Success, Message = $"User {User.Name} was created" };
+                        User.Result = new ResultModel() { ResultType = ResultType.Success, Message = $"User {User.Name} was updated" };
                     }
                     else
                     {
-                        Response = new ResultModel() { ResultType = ResultType.Error, Message = $"User {User.Name} was not created" };
+                        User.Result = new ResultModel() { ResultType = ResultType.Error, Message = $"User {User.Name} was not updated" };
                     }
                 }
             }
             else
             {
-                Response = new ResultModel() { ResultType = ResultType.Error, Message = $"User {User.Name} was not created" };
+                User.Result = new ResultModel() { ResultType = ResultType.Error, Message = $"User {User.Name} was not updated" };
             }
+
+            if (Request.IsAjaxRequest()) return Partial("_User", User);
+            return Page();
         }
         public IActionResult OnPostCheckEmail(string email)
         {

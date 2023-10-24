@@ -1,6 +1,7 @@
 ﻿using Core.Entities;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BootCampWeb.PageModels
 {
@@ -29,5 +30,6 @@ namespace BootCampWeb.PageModels
         [Display(Name = "Password", Prompt = "Enter your password")]
         public string? Password { get; set; }
 
+        public ResultModel? Result { get; set; }
     }
 }

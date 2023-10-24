@@ -1,10 +1,18 @@
 ﻿@model BootCampWeb.PageModels.UserEditViewModel
 
 <div class="text-center">
+    @if (Model.Result != null)
+    {
+        <text>
+            <div class="@Model.Result.ResultType.ToString()">
+                @Model.Result.Message
+            </div>
+        </text>
+    }
     <form method="post" asp-page="UserEdit">
         @* <div asp-validation-summary="All"></div> *@
         <div class="d-flex flex-column gap-4">
-            <div class="d-flex justify-content-center gap-3">
+            <div class="d-flex justify-content-center gap-3" id="user-data">
                 <div class="d-flex flex-column align-items-end gap-2">
 
                     <div>

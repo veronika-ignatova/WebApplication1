@@ -2,6 +2,7 @@
 @model BootCampWeb.Pages.ProductsModel
 @{
 }
+<link rel="stylesheet" href="~/lib/DataTables/datatables.min.css" asp-append-version="true" />
 <link rel="stylesheet" href="~/css/Users.css" asp-append-version="true" />
 
 <div class="w-100">
@@ -13,7 +14,7 @@
             </form>
         </nav>
     </div>
-    <table class="table-car">
+    <table class="table-car" id="myTable">
         <thead style="background-color:pink;">
             <tr class="text-center">
                 <th>Id</th>
@@ -55,3 +56,11 @@
         </tbody>
     </table>
 </div>
+
+@section Scripts{
+    <script src="~/lib/DataTables/datatables.min.js"></script>
+    
+    <script type="text/javascript">
+        let table = new DataTable('#myTable');    
+    </script>
+}

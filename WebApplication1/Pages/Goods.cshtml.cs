@@ -24,8 +24,8 @@ namespace BootCampWeb.Pages
 
         public void OnGet()
         {
-            var a = DayType.Monday.GetDisplayName();
-            var a1 = "https://www.example.com".IsStringALink();
+            //var a = DayType.Monday.GetDisplayName();
+            //var a1 = "https://www.example.com".IsStringALink();
         }
 
         public void OnPost()

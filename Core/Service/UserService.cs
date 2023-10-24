@@ -14,30 +14,17 @@ namespace Core.Service
         public IUser GetUserById(Guid id)
         {
             return userRepository.GetUserById(id);
-            //var user = userRepository.GetUserById(id);
-            //if(user is User)
-            //{
-            //    return user as User;
-            //}
-            //else
-            //{
-            //    return new User()
-            //    {
-            //        Id = user.Id,
-            //        Name = user.Name,
-            //        Age = user.Age,
-            //        CreateDate = user.CreateDate,
-            //        Email = user.Email,
-            //        Password = user.Password,
-            //    };
-            //}
         }
         public bool CreateUser(IUser user)
         {
 
-            user.Id = Guid.NewGuid();
-            user.CreateDate = DateTime.Now;
+            Id = Guid.NewGuid();
+            CreateDate = DateTime.Now;
             return userRepository.CreateUser(user);
+        }
+        public bool UpdateUser(IUser user)
+        {
+            return userRepository.UpdateUser(user);
         }
         public bool IsUsedEmail(string email)
         {

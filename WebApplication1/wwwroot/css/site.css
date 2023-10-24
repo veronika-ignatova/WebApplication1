@@ -17,11 +17,14 @@ body {
   margin-bottom: 60px;
 }
 
+.validation-summary-errors{
+    color:red;
+}
+
+
+
 /*.center {
     display: flex;
     align-items: center;
     margin-left: 66%;
 }*/
-.validation-summary-errors{
-    color:red;
-}

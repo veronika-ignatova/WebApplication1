@@ -7,5 +7,6 @@ namespace Core.Interface.Repository
         bool CreateUser(IUser user);
         IUser GetUserByEmail(string email);
         IEnumerable<IUser> GetAllUsers();
+        bool UpdateUser(IUser user);
     }
 }

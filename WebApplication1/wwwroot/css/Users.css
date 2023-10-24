@@ -1,5 +1,6 @@
 ﻿body {
 }
+
 .table-car {
     background: #FACBEA;
     width: 100%;
@@ -10,7 +11,7 @@ td, th {
 }
 
 table tr:nth-child(2n) {
-    background-color: #FFE4D6;
+    background-color: #FFE4D6 !important;
 }
 
 .car-table-main {
@@ -18,7 +19,17 @@ table tr:nth-child(2n) {
     margin-right: auto;
     height: 75vh;
 }
+
 img.resize {
     width: 20px;
     height: 20px;
 }
+
+.user-name-modal {
+    text-decoration: underline;
+    cursor: pointer;
+    color:blueviolet;
+}
+    .user-name-modal:hover{
+        color: black;
+    }

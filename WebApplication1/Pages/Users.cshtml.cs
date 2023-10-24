@@ -15,7 +15,7 @@ namespace BootCampWeb.Pages
         }
         public IEnumerable<IUser> Users { get; set; }
         public IEnumerable<IAddress> Addresses { get; set; }
-            public void OnGet()
+        public void OnGet()
         {
             Users = _userService.GetAllUsers();
         }

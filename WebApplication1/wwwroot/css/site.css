@@ -21,7 +21,13 @@ body {
     color:red;
 }
 
+.success{
+    color:seagreen;
+}
 
+.fail {
+    color: red;
+}
 
 /*.center {
     display: flex;

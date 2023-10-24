@@ -42,10 +42,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="myModalLabel">
-                    @*  @foreach(var user in Model.Users)
-                    { *@
                     Edit your user
-                    @* } *@
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -56,10 +53,8 @@
     </div>
 </div>
 
-
 @section Scripts{
     <script src="~/lib/DataTables/datatables.min.js"></script>
-
     <script type="text/javascript">
         let table = new DataTable('#myTable');
 
@@ -70,11 +65,9 @@
                 url: '/UserEdit?id=' + userId,
             }).done(function (data) {
                 $('#myModal .modal-body').html(data);
-
                 sendUserPost();
             });
         };
-
 
         function sendUserPost() {
             $("#myModal form").submit(function (e) {
@@ -89,11 +82,18 @@
                     data: data,
                     success: function (data) {
                         $('#myModal .modal-body').html(data);
+                        let message = $(data).find('#result-message').html();
+                        if (message) {
+                            ShowMessages(message);
+                        }
+                        else{
+                            ShowMessages('Not updated');
+                        }
                         sendUserPost();
                     }
                 });
             });
         };
-    </script>
 
+    </script>
 }

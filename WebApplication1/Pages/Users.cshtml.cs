@@ -1,3 +1,4 @@
+using BootCampWeb.PageModels;
 using Core.Interface;
 using Core.Interface.Service;
 using Microsoft.AspNetCore.Mvc.RazorPages;

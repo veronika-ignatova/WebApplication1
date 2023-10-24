@@ -4,8 +4,10 @@
     @if (Model.Result != null)
     {
         <text>
-            <div class="@Model.Result.ResultType.ToString()">
-                @Model.Result.Message
+            <div id="result-message" class="d-none">
+                <div class="@Model.Result.ResultType.ToString().ToLower()">
+                    @Model.Result.Message
+                </div>
             </div>
         </text>
     }
@@ -14,7 +16,6 @@
         <div class="d-flex flex-column gap-4">
             <div class="d-flex justify-content-center gap-3" id="user-data">
                 <div class="d-flex flex-column align-items-end gap-2">
-
                     <div>
                         <label asp-for="Name"></label>
                         <input asp-for="Name">

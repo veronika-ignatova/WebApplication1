@@ -30,7 +30,7 @@
             <div>
                 <label asp-for="Input.Email"></label>
                 <input asp-for="Input.Email" id="author-email-id" oninput="ChangeEmail(event)" />
-                <span class="loader d-none" id="email-loader"></span>
+                <span class="loader" id="email-loader"></span>
                 <span class="d-none field-validation-error" id="email-loader-error">This email is used</span>
                 <span asp-validation-for="Input.Email"></span>
             </div>

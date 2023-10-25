@@ -17,26 +17,32 @@
             <div class="d-flex justify-content-center gap-3" id="user-data">
                 <div class="d-flex flex-column align-items-end gap-2">
                     <div>
-                        <label asp-for="Name"></label>
+                        <label class="label-form" asp-for="Name"></label>
                         <input asp-for="Name">
+                    </div>
+                    <div>
                         <span asp-validation-for="Name"></span>
                     </div>
                     <div>
-                        <label asp-for="Age"></label>
+                        <label class="label-form" asp-for="Age"></label>
                         <input type="number" asp-for="Age">
+                    </div>
+                    <div>
                         <span asp-validation-for="Age"></span>
                     </div>
                     <div>
-                        <label asp-for="Email"></label>
+                        <label class="label-form" asp-for="Email"></label>
                         <input asp-for="Email" id="author-email-id" oninput="ChangeEmail(event)" />
-                        <span class="loader d-none" id="email-loader"></span>
+                    </div>
+                    <div>
                         <span class="d-none field-validation-error" id="email-loader-error">This email is used</span>
                         <span asp-validation-for="Email"></span>
                     </div>
                     <div>
-
-                        <label asp-for="Password"></label>
+                        <label class="label-form" asp-for="Password"></label>
                         <input type="password" asp-for="Password">
+                    </div>
+                    <div>
                         <span asp-validation-for="Password"></span>
                     </div>
 
@@ -45,23 +51,31 @@
                 </div>
                 <div class="d-flex flex-column align-items-end gap-2">
                     <div>
-                        <label asp-for="Address.City"></label>
+                        <label class="label-form" asp-for="Address.City"></label>
                         <input asp-for="Address.City">
+                    </div>
+                    <div>
                         <span asp-validation-for="Address.City"></span>
                     </div>
                     <div>
-                        <label asp-for="Address.Country"></label>
+                        <label class="label-form" asp-for="Address.Country"></label>
                         <input asp-for="Address.Country">
+                    </div>
+                    <div>
                         <span asp-validation-for="Address.Country"></span>
                     </div>
                     <div>
-                        <label asp-for="Address.Street"></label>
+                        <label class="label-form" asp-for="Address.Street"></label>
                         <input asp-for="Address.Street">
+                    </div>
+                    <div>
                         <span asp-validation-for="Address.Street"></span>
                     </div>
                     <div>
-                        <label asp-for="Address.Index"></label>
+                        <label class="label-form" asp-for="Address.Index"></label>
                         <input asp-for="Address.Index">
+                    </div>
+                    <div>
                         <span asp-validation-for="Address.Index"></span>
                     </div>
                     <div>
@@ -70,8 +84,9 @@
                 </div>
             </div>
             <div>
-                <input type="submit" value="Edit">
+                <input class="button-input" type="submit" value="Edit">
             </div>
         </div>
     </form>
 </div>
+<partial name="_ValidationScriptsPartial" />

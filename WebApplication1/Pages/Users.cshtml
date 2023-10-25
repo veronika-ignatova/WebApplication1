@@ -71,27 +71,28 @@
 
         function sendUserPost() {
             $("#myModal form").submit(function (e) {
-
                 e.preventDefault();
-                var actionurl = e.currentTarget.action;
-                let data = $("#myModal form").serialize();
+                if ($('#myModal form').valid()) {
+                    var actionurl = e.currentTarget.action;
+                    let data = $("#myModal form").serialize();
 
-                $.ajax({
-                    url: actionurl,
-                    type: 'post',
-                    data: data,
-                    success: function (data) {
-                        $('#myModal .modal-body').html(data);
-                        let message = $(data).find('#result-message').html();
-                        if (message) {
-                            ShowMessages(message);
+                    $.ajax({
+                        url: actionurl,
+                        type: 'post',
+                        data: data,
+                        success: function (data) {
+                            $('#myModal .modal-body').html(data);
+                            let message = $(data).find('#result-message').html();
+                            if (message) {
+                                ShowMessages(message);
+                            }
+                            else {
+                                ShowMessages('Not updated');
+                            }
+                            sendUserPost();
                         }
-                        else{
-                            ShowMessages('Not updated');
-                        }
-                        sendUserPost();
-                    }
-                });
+                    });
+                }
             });
         };
 

@@ -17,10 +17,15 @@ body {
   margin-bottom: 60px;
 }
 
-.validation-summary-errors{
-    color:red;
+.validation-summary-errors {
+    color: red;
 }
 
+.field-validation-error {
+    color: red;
+    display: flex;
+    justify-content: flex-end;
+}
 .success{
     color:seagreen;
 }
@@ -34,3 +39,20 @@ body {
     align-items: center;
     margin-left: 66%;
 }*/
+.label-form {
+    color: #B4886B;
+    font-weight: bold;
+    width: 130px;
+    float: left;
+}
+
+    .label-form:after {
+        content: ": "
+    }
+.button-input {
+    padding: 10px;
+    border: 1px solid gray;
+    background-color: #B4886B;
+    border-radius: 5px;
+    font: inherit;
+}
